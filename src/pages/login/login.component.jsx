@@ -54,6 +54,7 @@ function Login() {
         fetch('https://netzwelt-devtest.azurewebsites.net/Account/SignIn', {
             method: "POST",
             headers: {
+                'Access-Control-Allow-Origin': '*',
                 Accept: "application/json",
                 "Content-Type": "application/json",
                 'mode': 'no-cors'
