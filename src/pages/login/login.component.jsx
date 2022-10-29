@@ -14,29 +14,40 @@ function Login() {
 
     function handleSubmit(e) {
         e.preventDefault();
+        
+        // axios.post(
+        //     'https://netzwelt-devtest.azurewebsites.net/Account/SignIn',
+        //     {
+        //         'username': username.current.value,
+        //         'password': password.current.value
+        //     },
+        //     {
+        //         headers: {
+        //             'accept': 'text/plain',
+        //             'Content-Type': 'application/json'
+        //         }
+        //     }
+        // )
+        // .then( (result) => {
+        //     console.log('SUCCESS')
+        //     console.log(result)
+        // })
+        // .catch( (error) => {
+        //     console.log('ERROR')
+        //     console.log(error)
+        // });
 
-        // axios.post('https://netzwelt-devtest.azurewebsites.net/Account/SignIn', {
-        //         "username": username.current.value,
-        //         "password": password.current.value
-        //     })
-        //     .then( (result) => {
-        //         console.log(result)
-        //     })
-        //     .catch( (error) => {
-        //         console.log(error)
-        //     });
-
-        axios.post(
+        fetch(
             'https://netzwelt-devtest.azurewebsites.net/Account/SignIn',
+            
+            {
+                headers: {
+                    'mode': 'no-cors'
+                }
+            },
             {
                 'username': username.current.value,
                 'password': password.current.value
-            },
-            {
-                headers: {
-                    'accept': 'text/plain',
-                    'Content-Type': 'application/json'
-                }
             }
         )
         .then( (result) => {
