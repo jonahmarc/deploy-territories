@@ -15,16 +15,32 @@ function Login() {
     function handleSubmit(e) {
         e.preventDefault();
 
-        axios.post('https://netzwelt-devtest.azurewebsites.net/Account/SignIn', {
-                "username": username.current.value,
-                "password": password.current.value
-            })
-            .then( (result) => {
-                console.log(result)
-            })
-            .catch( (error) => {
-                console.log(error)
-            });
+        // axios.post('https://netzwelt-devtest.azurewebsites.net/Account/SignIn', {
+        //         "username": username.current.value,
+        //         "password": password.current.value
+        //     })
+        //     .then( (result) => {
+        //         console.log(result)
+        //     })
+        //     .catch( (error) => {
+        //         console.log(error)
+        //     });
+
+        const response = axios.post(
+            'https://netzwelt-devtest.azurewebsites.net/Account/SignIn',
+            {
+                'username': username.current.value,
+                'password': password.current.value
+            },
+            {
+                headers: {
+                    'accept': 'text/plain',
+                    'Content-Type': 'application/json'
+                }
+            }
+        );
+
+        console.log(response)
     }
 
     return (
