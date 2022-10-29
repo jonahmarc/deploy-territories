@@ -40,12 +40,13 @@ function Login() {
             }
         )
         .then( (result) => {
+            console.log('SUCCESS')
             console.log(result)
         })
         .catch( (error) => {
+            console.log('ERROR')
             console.log(error)
         });
-        console.log('this is new')
 
     }
 
