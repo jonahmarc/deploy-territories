@@ -26,7 +26,7 @@ function Login() {
         //         console.log(error)
         //     });
 
-        const response = axios.post(
+        axios.post(
             'https://netzwelt-devtest.azurewebsites.net/Account/SignIn',
             {
                 'username': username.current.value,
@@ -38,9 +38,15 @@ function Login() {
                     'Content-Type': 'application/json'
                 }
             }
-        );
+        )
+        .then( (result) => {
+            console.log(result)
+        })
+        .catch( (error) => {
+            console.log(error)
+        });
+        console.log('this is new')
 
-        console.log(response)
     }
 
     return (
