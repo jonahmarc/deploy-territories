@@ -6,15 +6,15 @@ import Home from "./pages/home/home.component";
 import Login from "./pages/login/login.component";
 
 function App() {
-  // const user = localStorage.getItem("token");
+  
+  const user = localStorage.getItem("token");
 
 	return (
 		<div>
       <Routes>
-        {/* { user && <Route path="/" exact element={<Home />} /> } */}
-        {/* <Route path="/" element={<Navigate replace to="/account/login" />} /> */}
+        { user && <Route path="/" exact element={<Home />} /> }
+        <Route path="/" element={<Navigate replace to="/account/login" />} />
         <Route path="/account/login" exact element={<Login />} />
-        <Route path="/" exact element={<Home />} />
 		  </Routes>
     </div>
 	);

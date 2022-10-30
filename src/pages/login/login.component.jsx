@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 
-import { useRef } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { Stack, Form, Button} from 'react-bootstrap';
 
 import './login.styles.css';
@@ -12,41 +12,27 @@ function Login() {
     const username = useRef();
     const password = useRef();
 
+    const [error, setError] = useState();
+
+    useEffect(() => {
+
+    }, [error]);
+
     function handleSubmit(e) {
         e.preventDefault();
 
-        fetch('https://netzwelt-devtest.azurewebsites.net/Account/SignIn', {
-            method: "POST",
-            headers: {
-                'Access-Control-Allow-Origin': '*',
-                Accept: "application/json",
-                "Content-Type": "application/json",
-                'mode': 'no-cors'
-            },
-            body: JSON.stringify({
-                'username': username.current.value,
-                'password': password.current.value
+        
+        axios.post('https://netzwelt-devtest.azurewebsites.net/Account/SignIn', {
+                "username": username.current.value,
+                "password": password.current.value
             })
-        })
-        .then( (result) => {
-            console.log('SUCCESS')
-            console.log(result)
-        })
-        .catch( (error) => {
-            console.log('ERROR')
-            console.log(error)
-        });
-
-        // axios.post('https://netzwelt-devtest.azurewebsites.net/Account/SignIn', {
-        //         "username": username.current.value,
-        //         "password": password.current.value
-        //     })
-        //     .then( (result) => {
-        //         console.log(result)
-        //     })
-        //     .catch( (error) => {
-        //         console.log(error)
-        //     });
+            .then( (result) => {
+                localStorage.setItem("token", result.data);
+			    window.location = "/";
+            })
+            .catch( (error) => {
+                setError(error.message)
+            });
 
         // fetch('https://netzwelt-devtest.azurewebsites.net/Account/SignIn', {
         //     method: "POST",
@@ -70,6 +56,7 @@ function Login() {
         //     console.log(error)
         // });
 
+
     }
 
     return (
@@ -88,6 +75,7 @@ function Login() {
                         <Form.Group className="mb-3" controlId="formBasicPassword">
                             <Form.Control ref={password} type="password" placeholder="Password" required/>
                         </Form.Group>
+                        {error && <h6 style={{color: 'red'}} >{error}</h6>}
                         <Button variant="primary" type="submit">
                             LOGIN
                         </Button>

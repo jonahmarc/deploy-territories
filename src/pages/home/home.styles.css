@@ -5,3 +5,13 @@
     justify-content: flex-start;
     padding: 2% 5%;
 }
+
+.left {
+    width: 80%;
+    height: 100%;
+}
+
+.right {
+    width: 20%;
+    height: 100%;
+}
