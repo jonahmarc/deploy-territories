@@ -2,7 +2,6 @@ import React from 'react';
 
 import { useRef } from 'react';
 import { Stack, Form, Button} from 'react-bootstrap';
-import axios from 'axios';
 
 import './login.styles.css';
 import phMap from '../../assets/phmap.png';
@@ -14,43 +13,7 @@ function Login() {
 
     function handleSubmit(e) {
         e.preventDefault();
-        
-        // axios.post(
-        //     'https://netzwelt-devtest.azurewebsites.net/Account/SignIn',
-        //     {
-        //         'username': username.current.value,
-        //         'password': password.current.value
-        //     },
-        //     {
-        //         headers: {
-        //             'accept': 'text/plain',
-        //             'Content-Type': 'application/json'
-        //         }
-        //     }
-        // )
-        // .then( (result) => {
-        //     console.log('SUCCESS')
-        //     console.log(result)
-        // })
-        // .catch( (error) => {
-        //     console.log('ERROR')
-        //     console.log(error)
-        // });
 
-        // fetch(
-        //     'https://netzwelt-devtest.azurewebsites.net/Account/SignIn',
-            
-        //     {
-        //         headers: {
-        //             'mode': 'no-cors'
-        //         }
-        //     },
-        //     {
-        //         'username': username.current.value,
-        //         'password': password.current.value
-        //     }
-        // )
-        
         fetch('https://netzwelt-devtest.azurewebsites.net/Account/SignIn', {
             method: "POST",
             headers: {
@@ -72,6 +35,18 @@ function Login() {
             console.log('ERROR')
             console.log(error)
         });
+
+
+        // axios.post('https://netzwelt-devtest.azurewebsites.net/Account/SignIn', {
+        //         "username": username.current.value,
+        //         "password": password.current.value
+        //     })
+        //     .then( (result) => {
+        //         console.log(result)
+        //     })
+        //     .catch( (error) => {
+        //         console.log(error)
+        //     });
 
     }
 

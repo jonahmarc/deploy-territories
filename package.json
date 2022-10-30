@@ -21,6 +21,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
+  "proxy": "https://netzwelt-devtest.azurewebsites.net/",
   "eslintConfig": {
     "extends": [
       "react-app",
