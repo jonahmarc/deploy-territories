@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 
 import { useRef } from 'react';
 import { Stack, Form, Button} from 'react-bootstrap';
@@ -14,39 +15,38 @@ function Login() {
     function handleSubmit(e) {
         e.preventDefault();
 
-        fetch('https://netzwelt-devtest.azurewebsites.net/Account/SignIn', {
-            method: "POST",
-            headers: {
-                'Access-Control-Allow-Origin': '*',
-                Accept: "application/json",
-                "Content-Type": "application/json",
-                'mode': 'no-cors'
-            },
-            body: JSON.stringify({
-                'username': username.current.value,
-                'password': password.current.value
+        axios.post('https://netzwelt-devtest.azurewebsites.net/Account/SignIn', {
+                "username": username.current.value,
+                "password": password.current.value
             })
-        })
-        .then( (result) => {
-            console.log('SUCCESS')
-            console.log(result)
-        })
-        .catch( (error) => {
-            console.log('ERROR')
-            console.log(error)
-        });
+            .then( (result) => {
+                console.log(result)
+            })
+            .catch( (error) => {
+                console.log(error)
+            });
 
-
-        // axios.post('https://netzwelt-devtest.azurewebsites.net/Account/SignIn', {
-        //         "username": username.current.value,
-        //         "password": password.current.value
+        // fetch('https://netzwelt-devtest.azurewebsites.net/Account/SignIn', {
+        //     method: "POST",
+        //     headers: {
+        //         'Access-Control-Allow-Origin': '*',
+        //         Accept: "application/json",
+        //         "Content-Type": "application/json",
+        //         'mode': 'no-cors'
+        //     },
+        //     body: JSON.stringify({
+        //         'username': username.current.value,
+        //         'password': password.current.value
         //     })
-        //     .then( (result) => {
-        //         console.log(result)
-        //     })
-        //     .catch( (error) => {
-        //         console.log(error)
-        //     });
+        // })
+        // .then( (result) => {
+        //     console.log('SUCCESS')
+        //     console.log(result)
+        // })
+        // .catch( (error) => {
+        //     console.log('ERROR')
+        //     console.log(error)
+        // });
 
     }
 
