@@ -21,7 +21,7 @@ function Login() {
     function handleSubmit(e) {
         e.preventDefault();
 
-        
+
         axios.post('https://netzwelt-devtest.azurewebsites.net/Account/SignIn', {
                 "username": username.current.value,
                 "password": password.current.value
@@ -34,29 +34,6 @@ function Login() {
                 setError(error.message)
             });
 
-        // fetch('https://netzwelt-devtest.azurewebsites.net/Account/SignIn', {
-        //     method: "POST",
-        //     headers: {
-        //         'Access-Control-Allow-Origin': '*',
-        //         Accept: "application/json",
-        //         "Content-Type": "application/json",
-        //         'mode': 'no-cors'
-        //     },
-        //     body: JSON.stringify({
-        //         'username': username.current.value,
-        //         'password': password.current.value
-        //     })
-        // })
-        // .then( (result) => {
-        //     console.log('SUCCESS')
-        //     console.log(result)
-        // })
-        // .catch( (error) => {
-        //     console.log('ERROR')
-        //     console.log(error)
-        // });
-
-
     }
 
     return (
@@ -67,7 +44,7 @@ function Login() {
                 </div>
                 <Stack className='m-0 p-0 justify-content-center'>
                     <h1 className='login_message'>WELCOME BACK</h1>
-                    <Form className='login_form' onSubmit={handleSubmit}> 
+                    <Form className='login_form' onSubmit={handleSubmit}>
                         <Form.Group className="mb-3" controlId="formBasicText">
                             <Form.Control ref={username} type="text" placeholder="Username" required/>
                         </Form.Group>
