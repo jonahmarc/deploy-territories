@@ -34,6 +34,27 @@ function Login() {
                 setError(error.message)
             });
 
+        // fetch('https://netzwelt-devtest.azurewebsites.net/Account/SignIn', {
+        //     method: "POST",
+        //     headers: {
+        //         'Access-Control-Allow-Origin': '*',
+        //         Accept: "application/json",
+        //         "Content-Type": "application/json",
+        //         'mode': 'no-cors'
+        //     },
+        //     body: JSON.stringify({
+        //         'username': username.current.value,
+        //         'password': password.current.value
+        //     })
+        // })
+        // .then( (result) => {
+        //     console.log('SUCCESS')
+        //     console.log(result)
+        // })
+        // .catch( (error) => {
+        //     console.log('ERROR')
+        //     console.log(error)
+        // });
     }
 
     return (
